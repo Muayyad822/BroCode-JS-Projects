@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Example</title>
+</head>
+<body>
+
+<input type="text" id="textToSpeak" placeholder="Type something to say">
+<button onclick="speak()">Speak</button>
+
+<script>
+function speak() {
+    const text = document.getElementById("textToSpeak").value;
+    const utterance = new SpeechSynthesisUtterance(text); // Create a new utterance
+    utterance.lang = 'ar-SA';
+    const voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices.find(voice => voice.lang === 'ar-SA'); // Example for US English
+
+    window.speechSynthesis.speak(utterance);
+}
+</script>
+
+</body>
+</html>
